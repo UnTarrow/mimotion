@@ -7,7 +7,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # ubuntu-latest is Ubuntu 26.04. actions/python-versions publishes
+    # CPython 3.8.18 for 24.04 (linux x64) and not for 26.04, so
+    # actions/setup-python@v3 fails with "Version 3.8 with arch x64 not found".
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
       - name: Checkout codes
